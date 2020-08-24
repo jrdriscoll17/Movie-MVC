@@ -6,11 +6,7 @@ class UsersController < ApplicationController
     end
 
     get '/signup' do
-        if !logged_in?
-            erb :'users/new', locals: {message: "Create an account to start your movie collection!"}
-        else
-            redirect to '/movies'
-        end
+        erb :'users/new'
     end
 
     post '/signup' do
@@ -35,7 +31,7 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by(username: params[:username])
+        user = User.find_by(email: params[:email])
         if user #&& user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect to "/movies"
@@ -47,8 +43,6 @@ class UsersController < ApplicationController
     get '/logout' do
         if logged_in?
             session.destroy
-            redirect to '/login'
-        else
             redirect to '/'
         end
     end
