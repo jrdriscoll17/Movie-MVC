@@ -1,0 +1,51 @@
+<h1>Add a movie to your collection!</h1>
+
+<form action="/movies" method="post">
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="user[movie][title]">
+
+    <br>
+
+    <h2>Genres:</h2>
+
+    <% Genre.default_genres.each do |genre| %>
+        <input type="checkbox" name="user[movie][genres][]" value="<%= genre %>%">
+        <%= genre %><br>
+    <% end %>
+
+    <br>
+
+    <label for="actors">Actors:</label>
+    <input id="actors" type="text" name="user[movie][artists][]">
+
+    <br><br>
+
+    <input type="submit" value="Create Movie">
+</form>
+
+<%# hash = {
+    :user => {
+        :username => "username",
+        :movie => {
+            :title => "title", 
+            :genres = [
+
+            ],
+            :actors = [
+
+            ]
+        }
+    },
+    :user => {
+        :username => "username2",
+        :movie => {
+            :title => "title2", 
+            :genres = [
+
+            ],
+            :actors = [
+
+            ]
+        }
+    }
+} %>
