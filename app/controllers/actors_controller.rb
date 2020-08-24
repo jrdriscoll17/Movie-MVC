@@ -1,3 +1,3 @@
 class ActorsController < ApplicationController
-
-  end
+    
+end
