@@ -9,7 +9,7 @@
         <h2>
             <%= movie.title %>
 
-            <form action="/movies/:slug/edit" method="get">
+            <form action="/movies/<%= movie.id %>/edit" method="get">
                 <input type="submit" value="Edit">
             </form>
         </h2>

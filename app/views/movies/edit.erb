@@ -1,0 +1,28 @@
+<h1><%= @movie.title %></h1>
+
+<form action="/movies" method="post">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="movie[title]" value="<%= @movie.title %>">
+
+    <br>
+
+    <h2>Genres:</h2>
+
+    <% Genre.all.each do |genre| %>
+        <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>" <%='checked' if @movie.genre_ids.include?(genre.id) %>>
+        <%= genre.name %><br>
+    <% end %>
+
+    <br>
+
+    <label for="actors">Actors:</label>
+    <input id="actors" type="text" name="movie[actors][]" value="<%= @movie.actor_ids[0] ? Actor.find_by_id(@movie.actor_ids[0]).name : "" %>">
+    <input type="text" name="movie[actors][]" value="<%= @movie.actor_ids[1] ? Actor.find_by_id(@movie.actor_ids[1]).name : "" %>">
+    <input type="text" name="movie[actors][]" value="<%= @movie.actor_ids[2] ? Actor.find_by_id(@movie.actor_ids[2]).name : "" %>">
+
+    <br><br>
+
+    <input type="submit" value="Update Movie">
+</form>

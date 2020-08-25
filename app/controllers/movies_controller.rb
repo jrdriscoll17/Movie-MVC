@@ -28,6 +28,12 @@ class MoviesController < ApplicationController
         end   
     end
 
+    get '/movies/:id/edit' do
+        @movie = Movie.find_by_id(params[:id])
+        binding.pry
+        erb :'/movies/edit'
+    end
+
     def movie_exists?
         titles = Movie.all.collect {|movie| movie.title}
         titles.include?(params[:movie][:title])
