@@ -1,5 +1,9 @@
 <h1>Add a movie to your collection!</h1>
 
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+
 <form action="/movies" method="post">
     <label for="title">Title:</label>
     <input id="title" type="text" name="movie[title]">
@@ -24,27 +28,3 @@
 
     <input type="submit" value="Create Movie">
 </form>
-
-<%# hash = {
-    :movie => {
-        :title => "title", 
-        :genres = [
-
-        ],
-        :actors = [
-
-        ]
-    },
-    :user => {
-        :username => "username2",
-        :movie => {
-            :title => "title2", 
-            :genres = [
-
-            ],
-            :actors = [
-
-            ]
-        }
-    }
-} %>

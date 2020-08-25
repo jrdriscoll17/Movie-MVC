@@ -20,9 +20,17 @@ class MoviesController < ApplicationController
             actor_ids << actor.id
         end
 
-        Movie.create(title: params[:movie][:title], genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
-
-        redirect '/movies'
+        if movie_exists?
+            erb :'/movies/new', locals: {message: "This movie already exists!"}
+        else
+            Movie.create(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
+            redirect '/movies'
+        end
         # binding.pry      
+    end
+
+    def movie_exists?
+        titles = Movie.all.collect {|movie| movie.title}
+        titles.include?(params[:movie][:title])
     end
 end
