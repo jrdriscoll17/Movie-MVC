@@ -25,8 +25,7 @@ class MoviesController < ApplicationController
         else
             Movie.create(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
             redirect '/movies'
-        end
-        # binding.pry      
+        end   
     end
 
     def movie_exists?
