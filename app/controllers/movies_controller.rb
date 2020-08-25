@@ -50,7 +50,14 @@ class MoviesController < ApplicationController
         @movie = Movie.find_by_id(params[:id])
         @movie.update(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
 
-        redirect '/movies/:id'
+        redirect "/movies/#{@movie.id}"
+    end
+
+    delete '/movies/:id' do
+        @movie = Movie.find_by_id(params[:id])
+        @movie.delete
+
+        redirect '/movies'
     end
 
     def movie_exists?

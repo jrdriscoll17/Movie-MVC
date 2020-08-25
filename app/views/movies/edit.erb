@@ -1,6 +1,6 @@
 <h1><%= @movie.title %></h1>
 
-<form action="/movies" method="post">
+<form action="/movies/<%= @movie.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
 
     <label for="title">Title:</label>
@@ -24,5 +24,11 @@
 
     <br><br>
 
+
     <input type="submit" value="Update Movie">
+</form>
+
+<form method="post" action="/movies/<%= @movie.id %>">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
 </form>

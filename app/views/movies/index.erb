@@ -12,6 +12,11 @@
             <form action="/movies/<%= movie.id %>/edit" method="get">
                 <input type="submit" value="Edit">
             </form>
+            
+            <form method="post" action="/movies/<%= movie.id %>">
+                <input id="hidden" type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete">
+            </form>
         </h2>
 
         </span>
