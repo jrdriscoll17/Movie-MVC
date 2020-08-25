@@ -34,6 +34,12 @@ class MoviesController < ApplicationController
         erb :'/movies/edit'
     end
 
+    get '/movies/:id' do
+        @movie = Movie.find_by_id(params[:id])
+
+        erb :'/movies/view'
+    end
+
     patch '/movies/:id' do
         actor_ids = []
         params[:movie][:actors].each do |actor_name|
@@ -43,7 +49,6 @@ class MoviesController < ApplicationController
 
         @movie = Movie.find_by_id(params[:id])
         @movie.update(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
-        # @movie.save
 
         redirect '/movies/:id'
     end

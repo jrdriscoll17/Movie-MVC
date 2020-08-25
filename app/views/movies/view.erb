@@ -1,0 +1,26 @@
+
+<h1><%= @movie.title %></h1>
+
+<strong>Genres:</strong>
+
+<br><br>
+
+<% @movie.genres.each do |genre| %>
+    <li><%= genre.name %></li>
+<% end %>
+
+<br>
+
+<strong>Actors:</strong>
+
+<br><br>
+
+<% @movie.actors.each do |actor| %>
+    <li><%= actor.name %></li>
+<% end %>
+
+<br>
+
+<form action="/movies/<%= @movie.id %>/edit" method="get">
+    <input type="submit" value="Edit">
+</form>
