@@ -1,0 +1,1 @@
+Genre.create(Genre.default_genres)

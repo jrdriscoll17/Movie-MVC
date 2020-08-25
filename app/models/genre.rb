@@ -1,25 +1,26 @@
 class Genre < ActiveRecord::Base
-    has_many :movies
+    has_many :movie_genres
+    has_many :movies, through: :movie_genres
     has_many :actors, through: :movies
 
-    DEFAULT_GENRES = [
-        "​Action",
-        "Animation",
-        "Comedy",
-        "Crime",
-        "Drama",
-        "Experimental",
-        "Fantasy",
-        "Historical",
-        "Horror",
-        "Romance",
-        "Science Fiction",
-        "Thriller",
-        "Western",
-        "Other"
-    ]
+    @@genres = [
+        {:name => "​Action"},
+        {:name => "Animation"},
+        {:name => "Comedy"},
+        {:name => "Crime"},
+        {:name => "Drama"},
+        {:name => "Experimental"},
+        {:name => "Fantasy"},
+        {:name => "Historical"},
+        {:name => "Horror"},
+        {:name => "Romance"},
+        {:name => "Science Fiction"},
+        {:name => "Thriller"},
+        {:name => "Western"},
+        {:name => "Other"}
+        ]
 
     def self.default_genres 
-        DEFAULT_GENRES
+        @@genres
     end
 end
