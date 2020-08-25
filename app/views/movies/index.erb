@@ -1,17 +1,29 @@
 <h1>Your movies:</h1>
 
 <% if @movies %>
-    <% @movies.each do |movie| %>
+    <li><% @movies.each do |movie| %>
         <h2><%= movie.title %></h2>
+
+        <span><strong>Genres:</strong></span>
+
+        <br><br>
 
         <% movie.genres.each do |genre| %>
             <li><%= genre.name %></li>
         <% end %>
 
+        <br>
+
+        <span><strong>Actors:</strong></span>
+
+        <br><br>
+
         <% movie.actors.each do |actor| %>
             <li><%= actor.name %></li>
         <% end %>
-    <% end %>
+
+        <br>
+    <% end %></li>
 <% end %>
 
 <form action="/logout" method="get">
