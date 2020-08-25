@@ -30,8 +30,22 @@ class MoviesController < ApplicationController
 
     get '/movies/:id/edit' do
         @movie = Movie.find_by_id(params[:id])
-        binding.pry
+        # binding.pry
         erb :'/movies/edit'
+    end
+
+    patch '/movies/:id' do
+        actor_ids = []
+        params[:movie][:actors].each do |actor_name|
+            actor = Actor.find_or_create_by(name: actor_name)
+            actor_ids << actor.id
+        end
+
+        @movie = Movie.find_by_id(params[:id])
+        @movie.update(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
+        # @movie.save
+
+        redirect '/movies/:id'
     end
 
     def movie_exists?
