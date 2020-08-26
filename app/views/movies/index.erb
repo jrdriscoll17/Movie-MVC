@@ -1,36 +1,13 @@
-<h1>Your movies:</h1>
+<h1>Available movies:</h1>
 
-<form action="/logout" method="get">
-    <input type="submit" value="Log Out">
-</form>
-
-<% if @movies %>
-    <li><% @movies.each do |movie| %>
-        <h2><a href="/movies/<%= movie.id %>"><%= movie.title %></a></h2>
-
-        <a href="/genres"><strong>Genres:</strong></a>
-
-        <br><br>
-
-        <% movie.genres.each do |genre| %>
-            <li><%= genre.name %></li>
-        <% end %>
-
-        <br>
-
-        <a href="/genres"><strong>Actors:</strong></a>
-
-        <br><br>
-
-        <% movie.actors.each do |actor| %>
-            <li><%= actor.name %></li>
-        <% end %>
-
-        <br>
-    <% end %></li>
+<% if !@movies.empty? %>
+    <% @movies.each do |movie| %>
+        <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+    <% end %>
+<% else %>
+    <h3>There are currently no movies in our database. You can contribute by adding one below!</h3>
 <% end %>
 
-
 <form action="/movies/new" method="get">
-    <input type="submit" value="Add Movie">
+    <input type="submit" value="Create Movie">
 </form>
