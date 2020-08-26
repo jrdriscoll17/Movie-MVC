@@ -1,0 +1,15 @@
+<h1><%= @actor.name %></h1>
+
+<% movies = Movie.all.collect{ |movie| movie if movie.actors.ids.include?(@actor.id)} %>
+
+<% if @actor.name != "" && !@actor.movies.empty? %>
+    <a href="/actors/<%= @actor.id %>"><h2><%= @actor.name %></h2></a>
+
+    <strong>Movies:</strong>
+
+    <br><br>
+
+    <% movies.compact.each do |movie| %>
+        <strong><a href="/movies/<%= movie.id %>"><%= movie.title %></a></strong><br><br>
+    <% end %>
+<% end %>
