@@ -30,7 +30,6 @@ class MoviesController < ApplicationController
 
     get '/movies/:id/edit' do
         @movie = Movie.find_by_id(params[:id])
-        # binding.pry
         erb :'/movies/edit'
     end
 
@@ -62,6 +61,6 @@ class MoviesController < ApplicationController
 
     def movie_exists?
         titles = Movie.all.collect {|movie| movie.title}
-        titles.include?(params[:movie][:title])
+        titles.include?(params[:movie][:title].upcase)
     end
 end

@@ -1,9 +1,9 @@
-<h1>Your movies:</h1>
+<h1><%= @user.username %></h1>
 
 <% @user.movies.each do |movie| %>
     <h2><%= movie.title %></h2>
 
-    <% movie.genre.each do |genre| %>
+    <% movie.genres.each do |genre| %>
         <li><%= genre.name %></li>
     <% end %>
 
