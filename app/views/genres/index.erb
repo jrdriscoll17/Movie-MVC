@@ -6,7 +6,8 @@
     <% if movies.compact != [] %>
         <h2><%= genre.name %></h2>
         <% movies.compact.each do |movie| %>
-            <strong><%= movie.title %></strong><br>
+            <strong>Movie: <a href="/movies/<%= movie.id %>"><%= movie.title %></a></strong><br><br>
+            <strong>Starring: </strong>
             <% movie.actors.each do |actor| %>
                 <li><%= actor.name %></li>
             <% end %><br>

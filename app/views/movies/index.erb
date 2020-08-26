@@ -6,22 +6,9 @@
 
 <% if @movies %>
     <li><% @movies.each do |movie| %>
-        <h2>
-            <%= movie.title %>
+        <h2><a href="/movies/<%= movie.id %>"><%= movie.title %></a></h2>
 
-            <form action="/movies/<%= movie.id %>/edit" method="get">
-                <input type="submit" value="Edit">
-            </form>
-            
-            <form method="post" action="/movies/<%= movie.id %>">
-                <input id="hidden" type="hidden" name="_method" value="delete">
-                <input type="submit" value="Delete">
-            </form>
-        </h2>
-
-        </span>
-
-        <span><strong>Genres:</strong></span>
+        <a href="/genres"><strong>Genres:</strong></a>
 
         <br><br>
 
@@ -31,7 +18,7 @@
 
         <br>
 
-        <span><strong>Actors:</strong></span>
+        <a href="/genres"><strong>Actors:</strong></a>
 
         <br><br>
 
