@@ -1,11 +1,7 @@
 class MoviesController < ApplicationController
     get '/movies' do
-        if logged_in?
-            @movies = Movie.all
-            erb :'movies/index'
-        else
-            redirect '/login'
-        end
+        @movies = Movie.all.sort_by{|movie| movie.title}
+        erb :'movies/index'
     end
 
     get '/movies/new' do
@@ -25,12 +21,13 @@ class MoviesController < ApplicationController
 
         if movie_exists? && !movie.user_ids.include?(session[:user_id])
             movie.user_ids << session[:user_id]
-            redirect to "/users/#{session[user_id]}"
+            redirect to "/users/#{session[:user_id]}"
         elsif movie_exists? && movie.user_ids.include?(session[:user_id])
             erb :'/movies/new', locals: {message: "This movie already exists!"}
         else
-            new_movie = Movie.create(title: params[:movie][:title].upcase, user_ids: session[:user_id], genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
-            binding.pry
+            new_movie = Movie.create(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
+            new_movie.user_ids = [session[:user_id]]
+            new_movie.save
             redirect '/movies'
         end   
     end
@@ -42,7 +39,6 @@ class MoviesController < ApplicationController
 
     get '/movies/:id' do
         @movie = Movie.find_by_id(params[:id])
-
         erb :'/movies/view'
     end
 

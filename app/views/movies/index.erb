@@ -2,11 +2,13 @@
 
 <% if !@movies.empty? %>
     <% @movies.each do |movie| %>
-        <a href="/movies/<%= movie.id %>"><%= movie.title %></a>
+        <a href="/movies/<%= movie.id %>"><%= movie.title %></a><br>
     <% end %>
 <% else %>
     <h3>There are currently no movies in our database. You can contribute by adding one below!</h3>
 <% end %>
+
+<br>
 
 <form action="/movies/new" method="get">
     <input type="submit" value="Create Movie">

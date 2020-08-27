@@ -2,14 +2,30 @@
 
 <% if !Movie.all.empty? %>
     <% @user.movies.each do |movie| %>
-        <h2><%= movie.title %></h2>
+        <h2><a href="/movies/<%= movie.id %>"><%= movie.title %></a><br></h2>
+
+        <strong>Genres:</strong>
+
+        <br>
 
         <% movie.genres.each do |genre| %>
             <li><%= genre.name %></li>
         <% end %>
+        
+        <br>
+
+        <strong>Actors:</strong>
+
+        <br>
 
         <% movie.actors.each do |actor| %>
             <li><%= actor.name %></li>
         <% end %>
     <% end %>
 <% end %>
+
+<br>
+
+<form action="/movies/new" method="get">
+    <input type="submit" value="Add Movie">
+</form>

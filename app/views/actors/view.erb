@@ -3,8 +3,6 @@
 <% movies = Movie.all.collect{ |movie| movie if movie.actors.ids.include?(@actor.id)} %>
 
 <% if @actor.name != "" && !@actor.movies.empty? %>
-    <a href="/actors/<%= @actor.id %>"><h2><%= @actor.name %></h2></a>
-
     <strong>Movies:</strong>
 
     <br><br>
