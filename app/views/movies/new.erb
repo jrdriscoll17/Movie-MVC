@@ -1,30 +1,36 @@
-<h1>Add a movie to your collection!</h1>
+<div class="header">Add a movie to your collection!</div>
 
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+<div class="canvas">
 
-<form action="/movies" method="post">
-    <label for="title">Title:</label>
-    <input id="title" type="text" name="movie[title]">
+  <form action="/movies" method="post">
+      <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-    <br>
+      <div class="title">
+          <input class="form-field" id="title" type="text" name="movie[title]" placeholder="Title">
+      </div>
 
-    <h2>Genres:</h2>
+      <h2>Genres:</h2>
 
-    <% Genre.all.each do |genre| %>
-        <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>">
-        <%= genre.name %><br>
-    <% end %>
+      <div class="checkboxes">
+          <% Genre.all.each do |genre| %>
+              <label class="checkbox-container"><%= genre.name %><br>
+                  <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>">
+                  <span class="checkmark"></span>
+              </label>
+          <% end %>
+      </div>
 
-    <br>
+      <h2>Actors:</h2>
+      <input class="form-field" id="actors" type="text" name="movie[actors][]"  placeholder="Actor">
+      <input class="form-field" type="text" name="movie[actors][]" placeholder="Actor">
+      <input class="form-field" type="text" name="movie[actors][]" placeholder="Actor">
 
-    <label for="actors">Actors:</label>
-    <input id="actors" type="text" name="movie[actors][]">
-    <input type="text" name="movie[actors][]">
-    <input type="text" name="movie[actors][]">
+      <br><br>
 
-    <br><br>
-
-    <input type="submit" value="Create Movie">
-</form>
+      <div class="new">
+        <div class="button-container">
+            <input class="button" type="submit" value="Create Movie">
+        </div>
+      </div>
+  </form>
+</div>

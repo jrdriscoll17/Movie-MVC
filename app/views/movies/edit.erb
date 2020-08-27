@@ -1,34 +1,36 @@
-<h1><%= @movie.title %></h1>
+<div class="canvas">
+    <form action="/movies/<%= @movie.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-<form action="/movies/<%= @movie.id %>" method="post">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
+        <div class="title">
+            <input class="form-field" id="title" type="text" name="movie[title]" value="<%= @movie.title %>" placeholder="Title">
+        </div>
 
-    <label for="title">Title:</label>
-    <input id="title" type="text" name="movie[title]" value="<%= @movie.title %>">
+        <h2>Genres:</h2>
 
-    <br>
+        <div class="checkboxes">
+            <% Genre.all.each do |genre| %>
+                <label class="checkbox-container"><%= genre.name %><br>
+                    <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>" <%='checked' if @movie.genre_ids.include?(genre.id) %>>
+                    <span class="checkmark"></span>
+                </label>
+            <% end %>
+        </div>
 
-    <h2>Genres:</h2>
+        <h2>Actors:</h2>
+        <input class="form-field" id="actors" type="text" name="movie[actors][]" value="<%= @movie.actor_ids[0] ? Actor.find_by_id(@movie.actor_ids[0]).name : "" %>" placeholder="Actor">
+        <input class="form-field" type="text" name="movie[actors][]" value="<%= @movie.actor_ids[1] ? Actor.find_by_id(@movie.actor_ids[1]).name : "" %>" placeholder="Actor">
+        <input class="form-field" type="text" name="movie[actors][]" value="<%= @movie.actor_ids[2] ? Actor.find_by_id(@movie.actor_ids[2]).name : "" %>" placeholder="Actor">
 
-    <% Genre.all.each do |genre| %>
-        <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>" <%='checked' if @movie.genre_ids.include?(genre.id) %>>
-        <%= genre.name %><br>
-    <% end %>
+        <br><br>
 
-    <br>
+        <div class="button-container">
+            <input class="button" type="submit" value="Update Movie">
 
-    <label for="actors">Actors:</label>
-    <input id="actors" type="text" name="movie[actors][]" value="<%= @movie.actor_ids[0] ? Actor.find_by_id(@movie.actor_ids[0]).name : "" %>">
-    <input type="text" name="movie[actors][]" value="<%= @movie.actor_ids[1] ? Actor.find_by_id(@movie.actor_ids[1]).name : "" %>">
-    <input type="text" name="movie[actors][]" value="<%= @movie.actor_ids[2] ? Actor.find_by_id(@movie.actor_ids[2]).name : "" %>">
-
-    <br><br>
-
-
-    <input type="submit" value="Update Movie">
-</form>
-
-<form method="post" action="/movies/<%= @movie.id %>">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
-</form>
+            <form method="post" action="/movies/<%= @movie.id %>">
+                <input id="hidden" type="hidden" name="_method" value="delete">
+                <input class="button" type="submit" value="Delete">
+            </form>
+        </div>
+    </form>
+</div>

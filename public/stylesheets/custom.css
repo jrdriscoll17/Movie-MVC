@@ -16,10 +16,15 @@
     /* --- Custom Styling --- */
 
     body {
+        background: url("../images/website_background.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         background-color: black;
         color: #333;
         font-family: Sans-Serif;
         line-height: 18px;
+        font-size: 18px;
     }
 
     /* --- Navigation Bar --- */
@@ -37,14 +42,15 @@
 
     ul.nav-bar li a {
         display: block;
-        color: white;
+        color: #60bf55;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        font-weight: bold;
     }
 
     ul.nav-bar li a:hover {
-        background-color: #111;
+        background-color: #000000;
     }
 
     /* --- Element Defaults --- */
@@ -63,6 +69,37 @@
     h3 {
         font-size: 18px;
         line-height: 36px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:link {
+        color: black;
+    }
+
+    a:visited {
+        color: black;
+    }
+
+    a:hover {
+        color: blue;
+    }
+
+    a:active {
+        color: blue;
+    }
+
+    .header {
+        width: 100%;
+        text-align: center;
+        font-size: 36px;
+        padding: 20px;
+        box-sizing: border-box;
+        font-weight: bold;
+        color: #60bf55;
+        margin-top: 60px;
     }
 
     /* --- Log In/Sign Up --- */
@@ -102,5 +139,186 @@
         color: white;
         font-size: 18px;
         cursor: pointer;
+    }
+
+    /* --- Display Grid --- */
+
+    .card {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 20px;
+    }
+
+    .card-item {
+        background-color: #60bf55;
+        padding: 20px;
+        width: fit-content;
+        border-radius: 10px;
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0 0 0 10px;
+    }
+
+    /* --- Buttons --- */
+
+    .button {
+        float: left;
+        padding: 10px;
+        height: 40px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        background: #60bf55;
+        color: black;
+        font-size: 18px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    /* --- Single Views --- */
+
+    .single-view {
+        width: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        background-color: #60bf55;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .single-view h1 {
+        text-align: center;
+        font-size: 36px;
+    }
+
+    .single-view h2 {
+        text-align: left;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .single-view .button {
+        position: relative;
+        width: 180px;
+        box-sizing: border-box;
+        background: black;
+        color: white;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+    /* --- New/Edit Movie --- */
+
+    .canvas {
+        width: 85%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        background-color: #60bf55;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .canvas .form-field {
+        border: none;
+        border-bottom: 4px solid black;
+        background: none;
+        outline: none;
+        padding: 8px;
+        margin: 0px 0px 6px 0px;
+        color: black;
+        font-size: 18px;
+        width: 25%;
+        box-sizing: border-box;
+    }
+
+    .canvas .title .form-field {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .canvas .button-container {
+        width: fit-content;
+        position: relative;
+    }
+
+    .canvas .button {
+        margin-left: 10px;
+        width: 511px;
+        box-sizing: border-box;
+        background: black;
+        color: white;
+    }
+
+    .checkboxes {
+        margin: 20px 0 20px 0;
+        width: fit-content;
+        justify-content: left;
+    }
+
+    .checkbox-container {
+        display: block;
+        position: relative;
+        padding-top: 4px;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .checkbox-container input {
+        display: none;
+    }
+
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        border-radius: 5px;
+        background-color: rgb(34, 36, 38);
+    }
+
+    .checkbox-container:hover input~.checkmark {
+        background-color: rgb(112, 112, 112);
+    }
+
+    .checkbox-container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .new .button {
+        box-sizing: border-box;
+        width: 1024px;
     }
 }
