@@ -10,6 +10,8 @@
 
 <br>
 
-<form action="/movies/new" method="get">
-    <input type="submit" value="Create Movie">
-</form>
+<% if logged_in? %>
+    <form action="/movies/new" method="get">
+        <input type="submit" value="Create Movie">
+    </form>
+<% end %>

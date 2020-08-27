@@ -33,8 +33,12 @@ class MoviesController < ApplicationController
     end
 
     get '/movies/:id/edit' do
-        @movie = Movie.find_by_id(params[:id])
-        erb :'/movies/edit'
+        if logged_in?
+            @movie = Movie.find_by_id(params[:id])
+            erb :'/movies/edit'
+        else
+            redirect to '/login'
+        end
     end
 
     get '/movies/:id' do

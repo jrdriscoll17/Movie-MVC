@@ -21,6 +21,11 @@
     line-height: 18px;
   }
 
+  nav {
+    float: right;
+    background-color: rgba(41, 41, 41, 0.993);
+  }
+
   .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .3);

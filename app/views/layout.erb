@@ -11,26 +11,27 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/custom.css" />
 
-    <nav>
-      <% if logged_in? %>
-        <a href="/movies">Movies</a>
-        <a href="/genres">Genres</a>
-        <a href="/actors">Actors</a>
-        <a href="/users">Users</a>
-        <a href="/users/view">Profile</a>
-        <a href="/logout">Log Out</a>
-      <% else %>
-        <a href="/movies">Movies</a>
-        <a href="/genres">Genres</a>
-        <a href="/actors">Actors</a>
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
-        <% end %>
-      </nav>
+
   </head>
   <body>
+    <ul class="nav-bar">
+      <% if logged_in? %>
+        <li><a href="/movies">Movies</a></li>
+        <li><a href="/genres">Genres</a></li>
+        <li><a href="/actors">Actors</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/users/view">Profile</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      <% else %>
+        <li><a href="/movies">Movies</a></li>
+        <li><a href="/genres">Genres</a></li>
+        <li><a href="/actors">Actors</a></li>
+        <li><a href="/login">Log In</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+      <% end %>
+    </ul>
     <div class="wrapper">
  
 
