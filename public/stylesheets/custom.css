@@ -102,6 +102,28 @@
         margin-top: 60px;
     }
 
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #60bf55 inset !important;
+        border-color: #60bf55;
+    }
+
+    /* --- Welcome --- */
+
+    .welcome a:link {
+        color: blue;
+    }
+
+    .welcome a:visited {
+        color: blue;
+    }
+
+    .welcome a:hover {
+        color: black;
+    }
+
     /* --- Log In/Sign Up --- */
 
     .login {
@@ -141,6 +163,14 @@
         cursor: pointer;
     }
 
+    .login .login-button .button {
+        margin-bottom: 10px;
+    }
+
+    .login .signup-button .button {
+        margin-bottom: 10px;
+    }
+
     /* --- Display Grid --- */
 
     .card {
@@ -175,6 +205,8 @@
         font-weight: bold;
     }
 
+
+
     /* --- Single Views --- */
 
     .single-view {
@@ -206,7 +238,7 @@
         box-sizing: border-box;
         background: black;
         color: white;
-        margin: 10px 10px 10px 10px;
+        margin: 10px 10px 0 10px;
     }
 
     .button-container {
@@ -245,9 +277,13 @@
     }
 
     .canvas .title .form-field {
+        max-width: 200px;
+        min-width: 100px;
+        width: fit-content;
         font-size: 36px;
         font-weight: bold;
         margin-bottom: 20px;
+
     }
 
     .canvas .button-container {
@@ -257,7 +293,7 @@
 
     .canvas .button {
         margin-left: 10px;
-        width: 511px;
+        width: fit-content;
         box-sizing: border-box;
         background: black;
         color: white;
@@ -321,10 +357,13 @@
         transform: rotate(45deg);
     }
 
-    .new .button {
-        box-sizing: border-box;
-        width: 1024px;
+    /* --- Movies --- */
+
+    .create-movie .button {
+        margin-left: 10px;
     }
+
+    /* --- Genres --- */
 
     .genres .card {
         display: grid;
@@ -352,5 +391,17 @@
 
     .genres .title {
         font-weight: bold;
+    }
+
+    .genres a.genre-name:link {
+        color: #60bf55;
+    }
+
+    .genres a.genre-name:visited {
+        color: #60bf55;
+    }
+
+    .genres a.genre-name:hover {
+        color: blue;
     }
 }

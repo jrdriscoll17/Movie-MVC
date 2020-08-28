@@ -45,7 +45,6 @@ class MoviesController < ApplicationController
 
     patch '/movies/:id' do
         @movie = Movie.find_by_id(params[:id])
-        binding.pry
         
         if @movie.user != current_user || !logged_in?
             redirect to '/login'

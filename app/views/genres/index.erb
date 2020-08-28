@@ -6,19 +6,13 @@
 
         <% if movies != [] %>
             <div class="card">
-                <h1><%= genre.name %>:</h1>
+                <h1><a class="genre-name" href="/genres/<%= genre.id %>"><%= genre.name %></a>:</h1>
 
                 <% movies.each do |movie| %>
                     <div class="card-item">
                         <a class="title" href="/movies/<%= movie.id %>"><%= movie.title %></a>
                     
-                        <span> 
-                            Starring: 
-                        </span>
-
-                        <% movie.actors.sort_by{|actor| actor.name}.each do |actor| %>
-                            <span><%= actor.name %></span>
-                        <% end %><br>
+                        <span>with: <%= movie.actors.collect{|actor| actor.name}.sort.join(",") %></span>
                     </div>
                 <% end %>
             </div>

@@ -1,31 +1,43 @@
 
-<h1>Add a movie to your collection!</h1>
+# Movie MVC
 
-<% unless locals.empty? %>
-  <%= message %>
-<% end %>
+This app will allow users to add movies to their profile with a title, genres, and up to three actors. These movies can then be viewd and updated on their profile page. User's movies will aslo be visible on the movies page to all users, however only the user who created the movie will be allowed to edit or remove the movie. The genres and actors pages allow users to view movies by genre or actor respectively.
 
-<form action="/movies" method="post">
-    <label for="title">Title:</label>
-    <input id="title" type="text" name="movie[title]">
+## Summary
 
-    <br>
+  - [Getting Started](#getting-started)
+  - [Authors](#authors)
+  - [License](#license)
 
-    <h2>Genres:</h2>
 
-    <% Genre.all.each do |genre| %>
-        <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>">
-        <%= genre.name %><br>
-    <% end %>
+## Getting Started
 
-    <br>
+These instructions will get you a copy of the project up and running on
+your local machine for development and testing purposes.
 
-    <label for="actors">Actors:</label>
-    <input id="actors" type="text" name="movie[actors][]">
-    <input type="text" name="movie[actors][]">
-    <input type="text" name="movie[actors][]">
+### Installing
 
-    <br><br>
+1. Fork and clone this repository
 
-    <input type="submit" value="Create Movie">
-</form>
+2. Change directories to where you installed the repo
+
+    ```cd your_install_path/movie-mvc```
+
+3. Run migrations
+
+    ```rake db:migrate```
+
+4. Seed database with required info
+
+    ```rake db:seed```
+
+5. Run shotgun
+
+    ```shotgun```
+
+6. Navigate to your local url in your browser: localhost:9393
+
+## Authors
+
+  - **Jake Driscoll**  -
+    [jrdriscoll17](https://github.com/jrdriscoll17)
