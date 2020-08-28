@@ -5,6 +5,6 @@ class Movie < ActiveRecord::Base
     has_many :movie_actors
     has_many :actors, through: :movie_actors
     
-    has_many :movie_users
-    has_many :users, through: :movie_users
+
+    belongs_to :users
 end

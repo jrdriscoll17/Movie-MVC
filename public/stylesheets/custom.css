@@ -16,9 +16,9 @@
     /* --- Custom Styling --- */
 
     body {
-        background: url("../images/website_background.jpg");
+        background-image: url("../images/website_background.jpg");
         background-position: center;
-        background-repeat: no-repeat;
+        background-repeat: repeat;
         background-size: cover;
         background-color: black;
         color: #333;
@@ -240,6 +240,10 @@
         box-sizing: border-box;
     }
 
+    .canvas .form-field:focus {
+        background: none;
+    }
+
     .canvas .title .form-field {
         font-size: 36px;
         font-weight: bold;
@@ -320,5 +324,33 @@
     .new .button {
         box-sizing: border-box;
         width: 1024px;
+    }
+
+    .genres .card {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 15px;
+    }
+
+    .genres .card-item {
+        background-color: #60bf55;
+        padding: 20px;
+        width: fit-content;
+        border-radius: 10px;
+        font-size: 36px;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    .genres .card-item div {
+        margin-top: 10px;
+    }
+
+    .genres h1 {
+        color: #60bf55;
+    }
+
+    .genres .title {
+        font-weight: bold;
     }
 }
