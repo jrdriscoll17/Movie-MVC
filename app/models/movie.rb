@@ -6,5 +6,7 @@ class Movie < ActiveRecord::Base
     has_many :actors, through: :movie_actors
     
 
-    belongs_to :users
+    belongs_to :user
+
+    validates :title, :actor_ids, :genre_ids, presence: true
 end

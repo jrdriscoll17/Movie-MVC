@@ -1,5 +1,4 @@
 # Can you create a popup without a redirect?
-# Can params be used inside a helper method?
 
 class MoviesController < ApplicationController
     get '/movies' do
@@ -16,16 +15,10 @@ class MoviesController < ApplicationController
     end
 
     post '/movies' do
-        if logged_in?
-            actor_ids = []
-            params[:movie][:actors].each do |actor_name|
-                if actor_name != ""
-                    actor = Actor.find_or_create_by(name: actor_name)
-                    actor_ids << actor.id
-                end
-            end
+        movie = Movie.create(formatted_hash)
 
-            movie = Movie.create(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
+
+        if logged_in? && movie.valid?
             movie.user = current_user
             movie.save
 
@@ -38,14 +31,10 @@ class MoviesController < ApplicationController
     get '/movies/:id/edit' do
         @movie = Movie.find_by_id(params[:id])
 
-        if @movie.user == current_user
-            if logged_in? && @movie.valid?
-                erb :'/movies/edit'
-            else logged_in? && !@movie.valid?
-                redirect to '/login'
-            end
+        if @movie.user != current_user || !logged_in?
+            redirect to '/login'
         else
-
+            erb :'/movies/edit'
         end
     end
 
@@ -56,39 +45,25 @@ class MoviesController < ApplicationController
 
     patch '/movies/:id' do
         @movie = Movie.find_by_id(params[:id])
+        binding.pry
         
-        if @movie.user == current_user
-            if logged_in?
-                actor_ids = []
-                params[:movie][:actors].each do |actor_name|
-                    actor = Actor.find_or_create_by(name: actor_name)
-                    actor_ids << actor.id
-                end
-    
-                @movie.update(title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids)
-    
-                redirect "/movies/#{@movie.id}"
-            else
-                redirect to '/login'
-            end
+        if @movie.user != current_user || !logged_in?
+            redirect to '/login'
         else
-            
+            @movie.update(formatted_hash)
+            redirect "/movies/#{@movie.id}"
         end
     end
 
     delete '/movies/:id' do
         @movie = Movie.find_by_id(params[:id])
         
-        if @movie.user == current_user
-            if logged_in?
-                @movie.delete
-    
-                redirect '/movies'
-            else
-                redirect to '/login'
-            end
+        if @movie.user != current_user || !logged_in?
+            redirect to '/login'
         else
-            
+            @movie.destroy
+
+            redirect '/movies'
         end
     end
 
@@ -100,8 +75,10 @@ class MoviesController < ApplicationController
     def formatted_hash
         actor_ids = []
         params[:movie][:actors].each do |actor_name|
-            actor = Actor.find_or_create_by(name: actor_name)
-            actor_ids << actor.id
+            if actor_name != ""
+                actor = Actor.find_or_create_by(name: actor_name)
+                actor_ids << actor.id
+            end
         end
 
         hash = {title: params[:movie][:title].upcase, genre_ids: params[:movie][:genre_ids], actor_ids: actor_ids}

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     get '/users/:id' do
         user = User.find_by_id(params[:id])
         
-        if user && user.id == current_user
+        if user 
             @user = user
             erb :'users/view'
         else

@@ -24,13 +24,10 @@
 
         <br><br>
 
-        <div class="button-container">
-            <input class="button" type="submit" value="Update Movie">
-
-            <form method="post" action="/movies/<%= @movie.id %>">
-                <input id="hidden" type="hidden" name="_method" value="delete">
-                <input class="button" type="submit" value="Delete">
-            </form>
-        </div>
+        <input class="button" type="submit" value="Update Movie">            
+    </form>
+    <form method="post" action="/movies/<%= @movie.id %>">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input class="button" type="submit" value="Delete">
     </form>
 </div>

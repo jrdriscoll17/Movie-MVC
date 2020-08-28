@@ -26,6 +26,8 @@
 
 <br>
 
-<form action="/movies/new" method="get">
-    <input type="submit" value="Add Movie">
-</form>
+<% if @user == current_user %>
+    <form action="/movies/new" method="get">
+        <input type="submit" value="Add Movie">
+    </form>
+<% end %>
