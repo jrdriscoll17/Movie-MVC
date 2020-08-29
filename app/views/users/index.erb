@@ -1,5 +1,9 @@
-<h1>Users:</h1>
+<div class="header">Users:</div>
 
-<% @users.each do |user| %>
-    <p><a href="/users/<%= user.id %>"><%= user.username %></a></p>
-<% end %>
+<div class="card">
+    <% @users.each do |user| %>
+        <div class="card-item">
+            <a href="/users/<%= user.id %>"><%= user.username %></a></.>
+        </div>
+    <% end %>
+</div>

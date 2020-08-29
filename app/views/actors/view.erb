@@ -1,13 +1,17 @@
-<h1><%= @actor.name %></h1>
+<div class="header"><%= @actor.name %></div>
 
-<% movies = Movie.all.collect{ |movie| movie if movie.actors.ids.include?(@actor.id)} %>
+<div class="single-view">
 
-<% if @actor.name != "" && !@actor.movies.empty? %>
-    <strong>Movies:</strong>
+    <% movies = Movie.all.collect{ |movie| movie if movie.actors.ids.include?(@actor.id)} %>
 
-    <br><br>
+    <% if @actor.name != "" && !@actor.movies.empty? %>
+        <h1>Movies:</h1>
 
-    <% movies.compact.each do |movie| %>
-        <strong><a href="/movies/<%= movie.id %>"><%= movie.title %></a></strong><br><br>
+        <br><br>
+
+        <% movies.compact.each do |movie| %>
+            <h1><a href="/movies/<%= movie.id %>"><%= movie.title %></a></h1>
+        <% end %>
     <% end %>
-<% end %>
+</div>
+

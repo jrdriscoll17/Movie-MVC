@@ -1,33 +1,41 @@
-<h1><%= @user.username %></h1>
+<div class="header"><%= @user.username %></div>
 
-<% if !Movie.all.empty? %>
-    <% @user.movies.each do |movie| %>
-        <h2><a href="/movies/<%= movie.id %>"><%= movie.title %></a><br></h2>
+<div class="profile">
+    <div class="card">
+        <% if !Movie.all.empty? %>
+            <% @user.movies.each do |movie| %>
+                <div class="card-item">
+                    <h1><a href="/movies/<%= movie.id %>"><%= movie.title %></a><br></h1>
 
-        <strong>Genres:</strong>
+                    <h2>Genres:</h2>
 
-        <br>
+                    <br>
 
-        <% movie.genres.each do |genre| %>
-            <li><%= genre.name %></li>
+                    <% movie.genres.each do |genre| %>
+                        <strong><%= genre.name %></strong><br><br>
+                    <% end %>
+                    
+                    <br>
+
+                    <h2>Actors:</h2>
+
+                    <br>
+
+                    <% movie.actors.each do |actor| %>
+                        <li><%= actor.name %></li>
+                    <% end %>
+                </div>
+            <% end %>
         <% end %>
-        
-        <br>
-
-        <strong>Actors:</strong>
-
-        <br>
-
-        <% movie.actors.each do |actor| %>
-            <li><%= actor.name %></li>
-        <% end %>
-    <% end %>
-<% end %>
+    </div>
+</div>
 
 <br>
 
 <% if @user == current_user %>
     <form action="/movies/new" method="get">
-        <input type="submit" value="Add Movie">
+        <div class="create-movie">
+            <input class="button" type="submit" value="Add Movie">
+        </div>
     </form>
 <% end %>
