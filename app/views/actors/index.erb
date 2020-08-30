@@ -1,19 +1,16 @@
 <div class="header">Actors:</div>
-
 <div class="card">
-    <% @actors.each do |actor| %>
-        <% if actor.name != "" && !actor.movies.empty? %>
-           <div class="card-item">
-                <h1><a href="/actors/<%= actor.id %>"><%= actor.name %></a></h1>
-            
-                <h1>Movies:</h1>
-
-                <br>
-
-                <% actor.movies.sort_by{|movie| movie.title}.compact.each do |movie| %>
-                    <a href="/movies/<%= movie.id %>"><%= movie.title %></a><br><br>
-                <% end %>
-           </div>
+  <% @actors.each do |actor| %>
+    <% if actor.name != "" && !actor.movies.empty? %>
+      <div class="card-item">
+        <h1><a href="/actors/<%= actor.id %>"><%= actor.name %></a></h1>
+        <h1>Movies:</h1>
+        <br>
+        <% actor.movies.sort_by{|movie| movie.title}.compact.each do |movie| %>
+          <a href="/movies/<%= movie.id %>"><%= movie.title %></a><br>
+          <br>
         <% end %>
+      </div>
     <% end %>
+  <% end %>
 </div>

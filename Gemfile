@@ -1,15 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'sinatra'
-gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'activerecord', '~> 4.2', '>= 4.2.6', require: 'active_record'
+gem 'bcrypt'
+gem 'pry'
 gem 'rake'
 gem 'require_all'
+gem 'shotgun'
+gem 'sinatra'
+gem 'sinatra-activerecord', require: 'sinatra/activerecord'
 gem 'sqlite3', '~> 1.3.6'
 gem 'thin'
-gem 'shotgun'
-gem 'pry'
-gem 'bcrypt'
 gem 'tux'
-
-

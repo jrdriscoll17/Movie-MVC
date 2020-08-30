@@ -1,21 +1,18 @@
 <div class="header">Available movies:</div>
-
 <% if !@movies.empty? %>
-    <div class="card">
-        <% @movies.each do |movie| %>
-            <div class="card-item"><a href="/movies/<%= movie.id %>"><%= movie.title %></a></div>
-        <% end %>
-    </div>
+  <div class="card">
+    <% @movies.each do |movie| %>
+      <div class="card-item"><a href="/movies/<%= movie.id %>"><%= movie.title %></a></div>
+    <% end %>
+  </div>
 <% else %>
-    <h3>There are currently no movies in our database. You can contribute by adding one below!</h3>
+  <h3>There are currently no movies in our database. You can contribute by adding one below!</h3>
 <% end %>
-
 <br>
-
 <% if logged_in? %>
-    <form action="/movies/new" method="get">
-        <div class="create-movie">
-            <input class="button" type="submit" value="Create Movie">
-        </div>
-    </form>
+  <form action="/movies/new" method="get">
+    <div class="create-movie">
+      <input class="button" type="submit" value="Create Movie">
+    </div>
+  </form>
 <% end %>

@@ -1,6 +1,7 @@
 # Specifications for the Sinatra Assessment
 
 Specs:
+
 - [x] Use Sinatra to build the app - Used sinatra
 - [x] Use ActiveRecord for storing information in a database - activerecord was used to store all data in sqlite3 database as well as create all class relationships
 - [x] Include more than one model class (e.g. User, Post, Category) - Used 4 models User, Movie, Actor, Genre
@@ -14,6 +15,7 @@ Specs:
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code - README is included
 
 Confirm
+
 - [x] You have a large number of small Git commits
 - [x] Your commit messages are meaningful
 - [x] You made the changes in a commit that relate to the commit message

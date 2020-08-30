@@ -1,39 +1,32 @@
 <% if @movie %>
-    <div class="header"><%= @movie.title %></div>
-    <div class="single-view">
-        <h1>Genres:</h1>
-
-        <br><br>
-
-        <% @movie.genres.each do |genre| %>
-            <h2><%= genre.name %></h2>
-        <% end %>
-
-        <br>
-
-        <h1>Actors:</h1>
-
-        <br><br>
-
-        <% @movie.actors.each do |actor| %>
-            <h2><%= actor.name %></h2>
-        <% end %>
-
-        <br>
-
-        <% if logged_in? && @movie.user == current_user %>
-            <div class="button-container">
-                <form action="/movies/<%= @movie.id %>/edit" method="get">
-                    <input class="button" type="submit" value="Edit">
-                </form>
-
-                <form method="post" action="/movies/<%= @movie.id %>">
-                    <input id="hidden" type="hidden" name="_method" value="delete">
-                    <input class="button" type="submit" value="Delete">
-                </form>  
-            </div>
-        <% end %>
-    </div>
+  <div class="header"><%= @movie.title %></div>
+  <div class="single-view">
+    <h1>Genres:</h1>
+    <br>
+    <br>
+    <% @movie.genres.each do |genre| %>
+      <h2><%= genre.name %></h2>
+    <% end %>
+    <br>
+    <h1>Actors:</h1>
+    <br>
+    <br>
+    <% @movie.actors.each do |actor| %>
+      <h2><%= actor.name %></h2>
+    <% end %>
+    <br>
+    <% if logged_in? && @movie.user == current_user %>
+      <div class="button-container">
+        <form action="/movies/<%= @movie.id %>/edit" method="get">
+          <input class="button" type="submit" value="Edit">
+        </form>
+        <form method="post" action="/movies/<%= @movie.id %>">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <input class="button" type="submit" value="Delete">
+        </form>
+      </div>
+    <% end %>
+  </div>
 <% else %>
-    <div class="header">Movie not found!</div>
+  <div class="header">Movie not found!</div>
 <% end %>

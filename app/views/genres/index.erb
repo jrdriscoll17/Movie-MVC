@@ -1,21 +1,17 @@
 <div class="header">Genres</div>
-
 <div class="genres">
-    <% @genres.each do |genre| %>
-        <% movies = genre.movies.sort_by{|movie| movie.title}.compact %>
-
-        <% if movies != [] %>
-            <div class="card">
-                <h1><a class="genre-name" href="/genres/<%= genre.id %>"><%= genre.name %></a>:</h1>
-
-                <% movies.each do |movie| %>
-                    <div class="card-item">
-                        <a class="title" href="/movies/<%= movie.id %>"><%= movie.title %></a>
-                    
-                        <span>with: <%= movie.actors.collect{|actor| actor.name}.sort.join(",") %></span>
-                    </div>
-                <% end %>
-            </div>
+  <% @genres.each do |genre| %>
+    <% movies = genre.movies.sort_by{|movie| movie.title}.compact %>
+    <% if movies != [] %>
+      <div class="card">
+        <h1><a class="genre-name" href="/genres/<%= genre.id %>"><%= genre.name %></a>:</h1>
+        <% movies.each do |movie| %>
+          <div class="card-item">
+            <a class="title" href="/movies/<%= movie.id %>"><%= movie.title %></a>
+            <span>with: <%= movie.actors.collect{|actor| actor.name}.sort.join(",") %></span>
+          </div>
         <% end %>
+      </div>
     <% end %>
+  <% end %>
 </div>

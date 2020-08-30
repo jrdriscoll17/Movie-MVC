@@ -1,11 +1,9 @@
 <div class="header"><%= @genre.name %></div>
-
 <div class="single-view">
-    <% movies = Movie.all.collect{ |movie| movie if movie.genres.ids.include?(@genre.id)} %>
-
-    <% if movies.compact != [] %>
-        <% movies.compact.each do |movie| %>
-            <h2><a href="/movies/<%= movie.id %>"><%= movie.title %></a> with: <%= movie.actors.collect{|actor| actor.name}.sort.join(",") %></h2>
-        <% end %>
+  <% movies = Movie.all.collect{ |movie| movie if movie.genres.ids.include?(@genre.id)} %>
+  <% if movies.compact != [] %>
+    <% movies.compact.each do |movie| %>
+      <h2><a href="/movies/<%= movie.id %>"><%= movie.title %></a> with: <%= movie.actors.collect{|actor| actor.name}.sort.join(",") %></h2>
     <% end %>
+  <% end %>
 </div>

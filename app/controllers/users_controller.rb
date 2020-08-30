@@ -1,70 +1,69 @@
 class UsersController < ApplicationController
-    get '/users' do
-        if logged_in?
-            @users = User.all
-            erb :'users/index'
-        else
-            redirect '/login'
-        end
+  get '/users' do
+    if logged_in?
+      @users = User.all
+      erb :'users/index'
+    else
+      redirect '/login'
     end
-    
-    get '/users/:id' do
-        user = User.find_by_id(params[:id])
-        
-        if user 
-            @user = user
-            erb :'users/view'
-        else
-            redirect to '/login'
-        end
-    end
+  end
 
-    get '/signup' do
-        if logged_in?
-            redirect to "/users/#{session[:user_id]}"
-        else
-            erb :'users/new' 
-        end
-    end
+  get '/users/:id' do
+    user = User.find_by_id(params[:id])
 
-    post '/signup' do
-        user = User.new(params)
-        
-        if user.valid?
-            user.save
-            session[:user_id] = user.id
-            redirect to "/users/#{user.id}"
-        else
-            redirect to '/signup'
-        end
+    if user
+      @user = user
+      erb :'users/view'
+    else
+      redirect to '/login'
     end
+  end
 
+  get '/signup' do
+    if logged_in?
+      redirect to "/users/#{session[:user_id]}"
+    else
+      erb :'users/new'
+    end
+  end
 
-    get '/login' do
-        if logged_in?
-            redirect to "/users/#{session[:user_id]}"
-        else 
-            erb :'users/login'
-        end
-    end
+  post '/signup' do
+    user = User.new(params)
 
-    post '/login' do
-        user = User.find_by(email: params[:email])
-        
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
-          redirect to "/users/#{user.id}"
-        else
-            redirect to '/signup'
-        end
+    if user.valid?
+      user.save
+      session[:user_id] = user.id
+      redirect to "/users/#{user.id}"
+    else
+      redirect to '/signup'
     end
-    
-    get '/logout' do
-        if logged_in?
-            session.destroy
-            redirect to '/'
-        else
-            redirect to '/login'
-        end
+  end
+
+  get '/login' do
+    if logged_in?
+      redirect to "/users/#{session[:user_id]}"
+    else
+      erb :'users/login'
     end
+  end
+
+  post '/login' do
+    user = User.find_by(email: params[:email])
+
+    if user&.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect to "/users/#{user.id}"
+    else
+      redirect to '/signup'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect to '/'
+    else
+      redirect to '/login'
+    end
+  end
 end

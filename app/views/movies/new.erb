@@ -1,34 +1,28 @@
 <div class="header">Add a movie to your collection!</div>
-
 <div class="canvas">
-
   <form action="/movies" method="post">
-      <div class="title">
-          <input class="form-field" id="title" type="text" name="movie[title]" placeholder="Title">
+    <div class="title">
+      <input class="form-field" id="title" type="text" name="movie[title]" placeholder="Title">
+    </div>
+    <h2>Genres:</h2>
+    <div class="checkboxes">
+      <% Genre.all.each do |genre| %>
+        <label class="checkbox-container"><%= genre.name %><br>
+          <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>">
+          <span class="checkmark"></span>
+        </label>
+      <% end %>
+    </div>
+    <h2>Actors:</h2>
+    <input class="form-field" id="actors" type="text" name="movie[actors][]"  placeholder="Actor">
+    <input class="form-field" type="text" name="movie[actors][]" placeholder="Actor">
+    <input class="form-field" type="text" name="movie[actors][]" placeholder="Actor">
+    <br>
+    <br>
+    <div class="new">
+      <div class="button-container">
+        <input class="button" type="submit" value="Create Movie">
       </div>
-
-      <h2>Genres:</h2>
-
-      <div class="checkboxes">
-          <% Genre.all.each do |genre| %>
-              <label class="checkbox-container"><%= genre.name %><br>
-                  <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>">
-                  <span class="checkmark"></span>
-              </label>
-          <% end %>
-      </div>
-
-      <h2>Actors:</h2>
-      <input class="form-field" id="actors" type="text" name="movie[actors][]"  placeholder="Actor">
-      <input class="form-field" type="text" name="movie[actors][]" placeholder="Actor">
-      <input class="form-field" type="text" name="movie[actors][]" placeholder="Actor">
-
-      <br><br>
-
-      <div class="new">
-        <div class="button-container">
-            <input class="button" type="submit" value="Create Movie">
-        </div>
-      </div>
+    </div>
   </form>
 </div>
