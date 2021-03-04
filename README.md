@@ -1,6 +1,6 @@
 # Movie MVC
 
-This app will allow users to add movies to their profile with a title, genres, and up to three actors. These movies can then be viewd and updated on their profile page. User's movies will aslo be visible on the movies page to all users, however only the user who created the movie will be allowed to edit or remove the movie. The genres and actors pages allow users to view movies by genre or actor respectively.
+This app will allow users to add movies to their profile with a title, genres, and up to three actors. These movies can then be viewed and updated on their profile page. User's movies will aslo be visible on the movies page to all users, however only the user who created the movie will be allowed to edit or remove the movie. The genres and actors pages allow users to view movies by genre or actor respectively.
 
 ## Summary
 
